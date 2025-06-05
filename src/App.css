@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/* Estilos específicos para App.jsx con nueva paleta */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f5f5;
+}
+
+main {
+  flex: 1;
+}
+
+/* Sistema de espaciado consistente */
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+section:nth-child(even) {
+  background-color: var(--section-alt-bg);
+}
+
+/* Variables CSS para consistencia con nueva paleta */
+:root {
+  --section-spacing: 6rem;
+  --section-bg: #f9f5f5;
+  --section-alt-bg: #ffffff;
+  --card-shadow: 0 4px 20px rgba(212, 165, 165, 0.15);
+  --card-shadow-hover: 0 8px 30px rgba(212, 165, 165, 0.25);
+  --transition-standard: all 0.3s ease;
+  --primary-gradient: linear-gradient(135deg, #d4a5a5 0%, #9e7777 100%);
+  --accent-gradient: linear-gradient(135deg, #bc9a6c 0%, #d4b888 100%);
+}
+
+.dark-mode {
+  --section-bg: #1a1a1a;
+  --section-alt-bg: #2d2d2d;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #bc9a6c 0px, #d4b888 40px, #bc9a6c 80px);
+  background-size: 200px;
+  animation: goldShimmer 2s infinite;
+}
+
+/* Decoradores de sección con nueva paleta */
+.section-decorator {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.section-decorator-primary {
+  background: radial-gradient(circle, rgba(212, 165, 165, 0.1), transparent 70%);
+}
+
+.section-decorator-secondary {
+  background: radial-gradient(circle, rgba(158, 119, 119, 0.1), transparent 70%);
+}
+
+.section-decorator-accent {
+  background: radial-gradient(circle, rgba(188, 154, 108, 0.1), transparent 70%);
+}
+
+.section-decorator-1 {
+  top: -100px;
+  left: -100px;
+}
+
+.section-decorator-2 {
+  bottom: -100px;
+  right: -100px;
+}
+
+/* Mejoras de accesibilidad */
+.focus-visible {
+  outline: 3px solid rgba(212, 165, 165, 0.5) !important;
+  outline-offset: 3px !important;
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Mejoras para secciones */
+.section-title-container {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  color: #3f2e2e;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 3px;
+}
+
+.section-subtitle {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  color: #6a5555;
+}
+
+/* Efectos especiales para la nueva paleta */
+.rose-glow {
+  box-shadow: 0 0 20px rgba(212, 165, 165, 0.3);
+}
+
+.gold-glow {
+  box-shadow: 0 0 20px rgba(188, 154, 108, 0.3);
+}
+
+.gradient-text-primary {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Botones con nueva paleta */
+.btn-primary {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 165, 165, 0.4);
+}
+
+.btn-accent {
+  background: var(--accent-gradient);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-accent:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(188, 154, 108, 0.4);
+}
