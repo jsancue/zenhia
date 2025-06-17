@@ -71,7 +71,7 @@ export default function LazyImage({ src, alt, sx, threshold = 0.1, ...props }) {
             />
         )}
         {isInView && imageSrc && ( // Only render img tag if in view and src is set
-            <Box
+            (<Box
                 component="img"
                 src={imageSrc}
                 alt={alt}
@@ -85,7 +85,7 @@ export default function LazyImage({ src, alt, sx, threshold = 0.1, ...props }) {
                   objectFit: sx?.objectFit || 'cover', // Default object-fit
                 }}
                 {...props}
-            />
+            />)
         )}
       </Box>
   );

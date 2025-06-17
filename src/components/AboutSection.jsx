@@ -1,7 +1,8 @@
 "use client"
 
 import { useContext } from "react"
-import { Box, Typography, Grid, Container, Paper, Avatar, useTheme, Button } from "@mui/material"
+import { Box, Typography, Container, Paper, Avatar, useTheme, Button } from "@mui/material"
+import Grid from "@mui/material/Grid";
 import { alpha } from '@mui/material/styles';
 import { motion } from "framer-motion"
 import { LanguageContext } from "../contexts/LanguageContext"
@@ -94,7 +95,7 @@ export default function AboutSection() {
                 </Box>
 
                 <Grid container spacing={6} alignItems="center">
-                    <Grid item xs={12} md={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -149,7 +150,7 @@ export default function AboutSection() {
                             </Box>
                         </motion.div>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -170,7 +171,7 @@ export default function AboutSection() {
                             </Typography>
 
                             <Grid container spacing={3} sx={{ mt: 4 }}>
-                                <Grid item xs={12} sm={6}>
+                                <Grid size={{ xs: 12, sm: 6 }}>
                                     <Paper
                                         elevation={0}
                                         sx={{
@@ -223,7 +224,7 @@ export default function AboutSection() {
                                         </Typography>
                                     </Paper>
                                 </Grid>
-                                <Grid item xs={12} sm={6}>
+                                <Grid size={{ xs: 12, sm: 6 }}>
                                     <Paper
                                         elevation={0}
                                         sx={{

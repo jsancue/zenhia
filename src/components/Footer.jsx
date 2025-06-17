@@ -1,7 +1,8 @@
 "use client"
 
 import { useContext } from "react"
-import { Box, Typography, Container, Grid, Link, IconButton, Divider, useTheme, Stack, alpha } from "@mui/material" // Added alpha
+import { Box, Typography, Container, Link, IconButton, Divider, useTheme, Stack, alpha } from "@mui/material" // Added alpha
+import Grid from "@mui/material/Grid"
 import { LanguageContext } from "../contexts/LanguageContext"
 import FacebookIcon from "@mui/icons-material/Facebook"
 import InstagramIcon from "@mui/icons-material/Instagram"
@@ -30,7 +31,7 @@ export default function Footer() {
             <Container maxWidth="lg">
                 <Grid container spacing={6}>
                     {/* Logo y descripción */}
-                    <Grid item xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                         <Typography
                             variant="h5"
                             sx={{
@@ -150,7 +151,7 @@ export default function Footer() {
                     </Grid>
 
                     {/* Enlaces rápidos */}
-                    <Grid item xs={12} sm={6} md={4}>
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                         <Typography
                             variant="h6"
                             sx={{
@@ -163,7 +164,7 @@ export default function Footer() {
                         </Typography>
 
                         <Grid container spacing={2}>
-                            <Grid item xs={6}>
+                            <Grid size={6}>
                                 <Stack spacing={2}>
                                     <Link
                                         href="#inicio"
@@ -235,7 +236,7 @@ export default function Footer() {
                                 </Stack>
                             </Grid>
 
-                            <Grid item xs={6}>
+                            <Grid size={6}>
                                 <Stack spacing={2}>
                                     <Link
                                         href="#testimonios"
@@ -310,7 +311,7 @@ export default function Footer() {
                     </Grid>
 
                     {/* Información de contacto */}
-                    <Grid item xs={12} sm={6} md={4}>
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                         <Typography
                             variant="h6"
                             sx={{

@@ -1,6 +1,7 @@
 "use client"
 
 import { useContext, useState, useEffect } from "react"
+import { Link as RouterLink } from 'react-router-dom'; // Import Link
 import { Box, Typography, Button, Container } from "@mui/material"
 import { alpha } from '@mui/material/styles'; // Corrected alpha import
 import { motion } from "framer-motion"
@@ -126,7 +127,8 @@ export default function HeroSection() {
                         variant="contained"
                         color="primary"
                         size="large"
-                        href="#reservas"
+                        component={RouterLink} // Use Link component
+                        to="/reservar" // Link to the booking page
                         sx={{
                             py: 1.5,
                             px: 4,

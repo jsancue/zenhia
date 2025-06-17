@@ -2,6 +2,7 @@
 "use client"
 
 import { useState, useEffect, useContext, useMemo } from "react";
+import { Link as RouterLink } from 'react-router-dom'; // Import Link
 import {
     AppBar,
     Toolbar,
@@ -70,8 +71,9 @@ export default function Navbar({ toggleColorMode, mode }) {
         { name: texts.nav.about, href: "#nosotros" },
         { name: texts.nav.gallery, href: "#galeria" },
         { name: texts.nav.testimonials, href: "#testimonios" },
-        { name: texts.nav.booking, href: "#reservas" },
+        { name: texts.nav.booking, href: "/reservar" }, // Changed to route
         { name: texts.nav.contact, href: "#contacto" },
+        { name: "Admin", href: "/admin" }, // Added Admin link
     ], [texts.nav]);
 
     const toggleDrawer = (open) => (event) => {
@@ -163,13 +165,13 @@ export default function Navbar({ toggleColorMode, mode }) {
                                     <List>
                                         {navLinks.map((link, index) => (
                                             <ListItem
-                                                // button // REMOVED this deprecated prop
                                                 key={link.name}
-                                                component="a" // This makes it behave like a link/button
-                                                href={link.href}
-                                                sx={{ // sx prop handles styling for interaction states
-                                                    borderLeft: activeSection === link.href.substring(1) ? `4px solid ${theme.palette.primary.main}` : "none",
-                                                    bgcolor: activeSection === link.href.substring(1) ? theme.palette.action.hover : "transparent",
+                                                component={link.href.startsWith('/') ? RouterLink : 'a'}
+                                                to={link.href.startsWith('/') ? link.href : undefined}
+                                                href={!link.href.startsWith('/') ? link.href : undefined}
+                                                sx={{
+                                                    borderLeft: activeSection === (link.href.startsWith('#') ? link.href.substring(1) : '') ? `4px solid ${theme.palette.primary.main}` : "none",
+                                                    bgcolor: activeSection === (link.href.startsWith('#') ? link.href.substring(1) : '') ? theme.palette.action.hover : "transparent",
                                                     transition: "all 0.2s ease",
                                                     animation: `fadeIn 0.5s ease forwards ${index * 0.1}s`,
                                                     // TODO: Move @keyframes fadeIn to global CSS or implement with framer-motion variants for better organization.
@@ -179,12 +181,11 @@ export default function Navbar({ toggleColorMode, mode }) {
                                                     },
                                                     color: 'text.primary',
                                                     "& .MuiListItemText-primary": {
-                                                        fontWeight: activeSection === link.href.substring(1) ? "bold" : "normal",
+                                                        fontWeight: activeSection === (link.href.startsWith('#') ? link.href.substring(1) : '') ? "bold" : "normal",
                                                         color: 'text.primary',
                                                     },
-                                                    // Add specific hover styles if needed, beyond what theme.palette.action.hover provides by default for button-like elements
                                                     '&:hover': {
-                                                        bgcolor: theme.palette.action.selected, // Example: use selected for a slightly stronger hover indication
+                                                        bgcolor: theme.palette.action.selected,
                                                     }
                                                 }}
                                             >
@@ -199,11 +200,13 @@ export default function Navbar({ toggleColorMode, mode }) {
                         </>
                     ) : (
                         <Box sx={{ display: "flex", alignItems: "center" }}>
-                            {navLinks.map((link) => (
-                                <Button
-                                    key={link.name}
-                                    href={link.href}
-                                    sx={{
+                            {navLinks.map((link) => {
+                                const isRouterLink = link.href.startsWith('/');
+                                const buttonProps = {
+                                    key: link.name,
+                                    component: isRouterLink ? RouterLink : 'a',
+                                    [isRouterLink ? 'to' : 'href']: link.href,
+                                    sx: {
                                         mx: 1,
                                         position: "relative",
                                         overflow: "hidden",
@@ -213,7 +216,7 @@ export default function Navbar({ toggleColorMode, mode }) {
                                             position: "absolute",
                                             bottom: 0,
                                             left: 0,
-                                            width: activeSection === link.href.substring(1) ? "100%" : "0%",
+                                            width: !isRouterLink && activeSection === link.href.substring(1) ? "100%" : "0%",
                                             height: "2px",
                                             bgcolor: (theme) => theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.secondary.main,
                                             transition: "width 0.3s ease",
@@ -221,12 +224,15 @@ export default function Navbar({ toggleColorMode, mode }) {
                                         "&:hover::after": {
                                             width: "100%",
                                         },
-                                        fontWeight: activeSection === link.href.substring(1) ? "bold" : "normal",
-                                    }}
-                                >
-                                    {link.name}
-                                </Button>
-                            ))}
+                                        fontWeight: !isRouterLink && activeSection === link.href.substring(1) ? "bold" : "normal",
+                                    }
+                                };
+                                return (
+                                    <Button {...buttonProps}>
+                                        {link.name}
+                                    </Button>
+                                );
+                            })}
                             <LanguageSelector isScrolled={isScrolled} mode={mode} />
                             <ThemeToggle toggleColorMode={toggleColorMode} mode={mode} isScrolled={isScrolled} />
                         </Box>

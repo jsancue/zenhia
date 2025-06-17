@@ -1,6 +1,7 @@
 "use client"
 
-import { useContext } from "react"
+import { useContext } from "react";
+import { Link } from 'react-router-dom'; // Import Link
 import {
     Box,
     Typography,
@@ -357,7 +358,8 @@ export default function ServicesSection() {
                                                 color="primary"
                                                 size="medium"
                                                 endIcon={<ArrowForwardIcon />}
-                                                href="#reservas"
+                                                component={Link} // Use Link component
+                                                to="/reservar" // Link to the booking page
                                                 sx={{
                                                     borderRadius: 1,
                                                     px: 3,

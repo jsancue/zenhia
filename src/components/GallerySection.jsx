@@ -1,7 +1,8 @@
 "use client"
 
 import { useContext, useState } from "react"
-import { Box, Typography, Container, Grid, Card, Modal, IconButton, useTheme, alpha } from "@mui/material" // CardMedia removed, alpha added
+import { Box, Typography, Container, Card, Modal, IconButton, useTheme, alpha } from "@mui/material" // CardMedia removed, alpha added
+import Grid from "@mui/material/Grid"
 import { motion, AnimatePresence } from "framer-motion"
 import { LanguageContext } from "../contexts/LanguageContext"
 import LazyImage from "./LazyImage"; // Import LazyImage
@@ -185,7 +186,7 @@ export default function GallerySection() {
 
                 <Grid container spacing={3}>
                     {galleryImages.map((image, index) => (
-                        <Grid item xs={12} sm={6} md={4} key={image.id}>
+                        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={image.id}>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
