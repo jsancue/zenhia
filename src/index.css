@@ -18,8 +18,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.7;
-  color: #3f2e2e;
-  background-color: #f9f5f5;
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 /* Estilos para fuente de dislexia */
@@ -57,6 +57,14 @@ body {
   --color-text-light: #6a5555;
   --color-text-muted: #8a7777;
 
+  --color-text-on-primary: #ffffff; /* Default for light theme primary */
+  --color-text-on-accent: #ffffff;  /* Default for light theme accent */
+
+  /* RGB components for rgba usage if needed, assumes light theme colors by default */
+  --color-primary-light-rgb: 226, 193, 193;
+  --color-secondary-light-rgb: 184, 153, 153;
+  --color-accent-light-rgb: 212, 184, 136;
+
   /* Espaciado */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -90,15 +98,52 @@ body {
 }
 
 /* Modo oscuro */
-.dark-theme {
-  --color-background: #1a1a1a;
-  --color-background-alt: #2d2d2d;
-  --color-text: #f9f5f5;
-  --color-text-light: #d4a5a5;
-  --color-text-muted: #b89999;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+body.dark-theme {
+  --color-primary: #D4A5A5; /* Retaining light brand color for dark mode accent */
+  --color-primary-light: #E2C1C1;
+  --color-primary-dark: #C68989;
+  --color-primary-darker: #B86D6D;
+
+  --color-secondary: #9E7777; /* Retaining for dark mode accent */
+  --color-secondary-light: #B89999;
+  --color-secondary-dark: #845555;
+  --color-secondary-darker: #6A3333;
+
+  --color-accent: #BC9A6C; /* Retaining for dark mode accent */
+  --color-accent-light: #D4B888;
+  --color-accent-dark: #A47C50;
+  --color-accent-darker: #8C5E34;
+
+  --color-background: #1A1A1A;
+  --color-background-alt: #2D2D2D;
+  --color-text: #F9F5F5;
+  --color-text-light: #D4A5A5;
+  --color-text-muted: #B89999;
+
+  /* Text on themed backgrounds for dark mode */
+  --color-text-on-primary: #2A2A2A; /* Dark text on light primary for dark mode */
+  --color-text-on-accent: #2A2A2A;  /* Dark text on light accent for dark mode */
+  /* --color-text-on-secondary: #FFFFFF; /* White text on secondary for dark mode (current secondary is dark enough) */
+
+
+  /* RGB components for rgba usage in dark mode */
+  /* These should correspond to the --color-*-light values if those are used for decorators */
+  --color-primary-light-rgb: 226, 193, 193; /* Still using the light variant for the decorator color */
+  --color-secondary-light-rgb: 184, 153, 153;
+  --color-accent-light-rgb: 212, 184, 136;
+
+
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-gold-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
+
+  /* Gradientes for dark mode */
+  --gradient-primary: linear-gradient(135deg, #C68989 0%, #845555 100%); /* Darker example */
+  --gradient-accent: linear-gradient(135deg, #A47C50 0%, #BC9A6C 100%);  /* Adjusted accent gradient */
+  --gradient-soft: linear-gradient(135deg, #2D2D2D 0%, #1A1A1A 100%);
 }
 
 body.dyslexia-font {

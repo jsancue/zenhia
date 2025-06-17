@@ -1,0 +1,14 @@
+{
+    "services": [
+      {
+        "id": 1,
+        "title": "Corte y Peinado",
+        "description": "Transforma tu look con cortes modernos.",
+        "category": "Cortes",
+        "price": 100,
+        "icon": "✂️",
+        "imageUrl": "https://img.freepik.com/free-photo/woman-getting-her-hair-cut-beauty-salon_23-2149167398.jpg?t=st=1749124697~exp=1749128297~hmac=85e1e214858e179dbb9b682089ebdec644bf2624d011f8432eae8d1e63123263&w=2000"
+      }
+    ]
+  }
+  

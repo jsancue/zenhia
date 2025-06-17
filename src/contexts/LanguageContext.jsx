@@ -22,6 +22,7 @@ export const translations = {
     },
     services: {
       title: "Nuestros Servicios",
+      emptyMessage: "No hay servicios disponibles por el momento.",
       subtitle:
         "Descubre nuestra amplia gama de servicios especializados en belleza y bienestar, diseñados para realzar tu belleza natural.",
       manicure: {
@@ -127,6 +128,7 @@ export const translations = {
       title: "Our Services",
       subtitle:
         "Discover our wide range of specialized beauty and wellness services, designed to enhance your natural beauty.",
+      emptyMessage: "No hay servicios disponibles por el momento.",
       manicure: {
         title: "Manicure and Pedicure",
         description: "Complete hand and foot care with professional techniques and quality products.",
@@ -236,7 +238,18 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     setTexts(translations[language])
     document.documentElement.lang = language
+
+    // Guardar el idioma en localStorage
+    if (typeof window !== "undefined") {
+      localStorage.setItem("zenhia-language", language)
+    }
   }, [language])
 
-  return <LanguageContext.Provider value={{ language, setLanguage, texts }}>{children}</LanguageContext.Provider>
+  const changeLanguage = (newLanguage) => {
+    if (translations[newLanguage]) {
+      setLanguage(newLanguage)
+    }
+  }
+
+  return <LanguageContext.Provider value={{ language, setLanguage: changeLanguage, texts }}>{children}</LanguageContext.Provider>
 }

@@ -106,188 +106,199 @@ export default function BookingSection() {
   }
 
   return (
-    <Box
-      id="reservas"
-      sx={{
-        py: 10,
-        bgcolor: "background.default",
-      }}
-    >
-      <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{
-              textAlign: "center",
-              mb: 2,
-              fontWeight: "bold",
-            }}
+      <Box
+          id="reservas"
+          sx={{
+            py: 10,
+            bgcolor: "background.default",
+          }}
+      >
+        <Container maxWidth="lg">
+          <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
           >
-            {texts.booking.title}
-          </Typography>
-        </motion.div>
+            <Typography
+                variant="h2"
+                component="h2"
+                sx={{
+                  textAlign: "center",
+                  mb: 2,
+                  fontWeight: "bold",
+                }}
+            >
+              {texts.booking.title}
+            </Typography>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{
-              textAlign: "center",
-              mb: 8,
-              maxWidth: "800px",
-              mx: "auto",
-              color: "text.secondary",
-            }}
+          <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {texts.booking.subtitle}
-          </Typography>
-        </motion.div>
+            <Typography
+                variant="h6"
+                component="p"
+                sx={{
+                  textAlign: "center",
+                  mb: 8,
+                  maxWidth: "800px",
+                  mx: "auto",
+                  color: "text.secondary",
+                }}
+            >
+              {texts.booking.subtitle}
+            </Typography>
+          </motion.div>
 
-        <Paper elevation={3} sx={{ p: { xs: 3, md: 5 }, borderRadius: 2 }}>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label={texts.booking.name}
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  error={Boolean(formErrors.name)}
-                  helperText={formErrors.name}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label={texts.booking.email}
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  error={Boolean(formErrors.email)}
-                  helperText={formErrors.email}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label={texts.booking.phone}
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  error={Boolean(formErrors.phone)}
-                  helperText={formErrors.phone}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  select
-                  label={texts.booking.service}
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  error={Boolean(formErrors.service)}
-                  helperText={formErrors.service}
-                  required
-                >
-                  {services.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DatePicker
-                    label={texts.booking.date}
-                    value={formData.date}
-                    onChange={handleDateChange}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        fullWidth
-                        error={Boolean(formErrors.date)}
-                        helperText={formErrors.date}
-                        required
-                      />
-                    )}
-                    disablePast
+          <Paper elevation={3} sx={{ p: { xs: 3, md: 5 }, borderRadius: 2 }}>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={3}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField
+                      fullWidth
+                      label={texts.booking.name}
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      error={Boolean(formErrors.name)}
+                      helperText={formErrors.name}
+                      required
                   />
-                </LocalizationProvider>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  label={texts.booking.time}
-                  name="time"
-                  value={formData.time}
-                  onChange={handleChange}
-                  error={Boolean(formErrors.time)}
-                  helperText={formErrors.time}
-                  required
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  multiline
-                  rows={4}
-                  label={texts.booking.message}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    disabled={submitting}
-                    sx={{
-                      py: 1.5,
-                      px: 4,
-                      borderRadius: "30px",
-                    }}
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField
+                      fullWidth
+                      label={texts.booking.email}
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      error={Boolean(formErrors.email)}
+                      helperText={formErrors.email}
+                      required
+                  />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField
+                      fullWidth
+                      label={texts.booking.phone}
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      error={Boolean(formErrors.phone)}
+                      helperText={formErrors.phone}
+                      required
+                  />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField
+                      fullWidth
+                      select
+                      label={texts.booking.service}
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      error={Boolean(formErrors.service)}
+                      helperText={formErrors.service}
+                      required
                   >
-                    {submitting ? "Enviando..." : texts.booking.submit}
-                  </Button>
-                </Box>
+                    {services.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                    ))}
+                  </TextField>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                        label={texts.booking.date}
+                        value={formData.date}
+                        onChange={handleDateChange}
+                        disablePast
+                        // renderInput={(params) => ( // REMOVED
+                        //   <TextField
+                        //     {...params}
+                        //     fullWidth
+                        //     error={Boolean(formErrors.date)}
+                        //     helperText={formErrors.date}
+                        //     required
+                        //   />
+                        // )}
+                        slotProps={{ // ADDED
+                          textField: {
+                            fullWidth: true,
+                            error: Boolean(formErrors.date),
+                            helperText: formErrors.date,
+                            required: true,
+                            // The `label` is already a direct prop of DatePicker,
+                            // and other necessary props like `id`, `inputRef`, `inputProps`, `InputProps`
+                            // are automatically handled by the default textField slot.
+                          },
+                        }}
+                    />
+                  </LocalizationProvider>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField
+                      fullWidth
+                      label={texts.booking.time}
+                      name="time"
+                      value={formData.time}
+                      onChange={handleChange}
+                      error={Boolean(formErrors.time)}
+                      helperText={formErrors.time}
+                      required
+                  />
+                </Grid>
+                <Grid size={12}>
+                  <TextField
+                      fullWidth
+                      multiline
+                      rows={4}
+                      label={texts.booking.message}
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                  />
+                </Grid>
+                <Grid size={12}>
+                  <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        disabled={submitting}
+                        sx={{
+                          py: 1.5,
+                          px: 4,
+                          borderRadius: "30px",
+                        }}
+                    >
+                      {submitting ? "Enviando..." : texts.booking.submit}
+                    </Button>
+                  </Box>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </Paper>
+            </form>
+          </Paper>
 
-        <Snackbar
-          open={success}
-          autoHideDuration={6000}
-          onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        >
-          <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: "100%" }}>
-            {texts.booking.success}
-          </Alert>
-        </Snackbar>
-      </Container>
-    </Box>
+          <Snackbar
+              open={success}
+              autoHideDuration={6000}
+              onClose={handleCloseSnackbar}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          >
+            <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: "100%" }}>
+              {texts.booking.success}
+            </Alert>
+          </Snackbar>
+        </Container>
+      </Box>
   )
 }
